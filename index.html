@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte à rebours pour la coupe à Mathieu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            margin: 0;
+        }
+        .countdown {
+            text-align: center;
+        }
+        .countdown h1 {
+            font-size: 3em;
+            color: #000500;
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown">
+        <h1 id="daysUntilShave"></h1>
+    </div>
+    <script>
+        function daysUntilShaving() {
+            const today = new Date();
+            const shaveDate = new Date(2024, 8, 21);
+            if (today > shaveDate) {
+                return 0;
+            }
+            const oneDay = 24 * 60 * 60 * 1000; // Millisecondes dans un jour
+            const daysLeft = Math.round((shaveDate - today) / oneDay);
+            return daysLeft;
+        }
+
+        document.getElementById('daysUntilShave').textContent = `Il reste ${daysUntilShaving() + 1} jours avant la nouvelle coupe à Mathieu !`;
+    </script>
+</body>
+</html>
