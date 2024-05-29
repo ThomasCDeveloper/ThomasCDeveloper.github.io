@@ -34,11 +34,16 @@
             const today = new Date();
             const shaveDate = new Date(2024, 8, 21);
 
-            if (Math.floor((today - shaveDate) / oneDay) >= 0) {
+            const daysLeft = Math.floor((shaveDate - today) / oneDay);
+
+            if (daysLeft > 0) {
                 return "Ca y est Mathieu il a plus de cheveux !!";
             }
-            const daysLeft = Math.round((shaveDate - today) / oneDay);
-            return `Il reste ${daysLeft} jours avant la nouvelle coupe à Mathieu !`;
+            if (daysLeft == 0) {
+                return "C'est le grand jour pour Mathieu !!";
+            }
+
+            return `Il reste ${daysLeft} jours avant la nouvelle coupe à Mathieu !!`;
         }
 
         document.getElementById('daysUntilShave').textContent = `${daysUntilShaving()}`;
