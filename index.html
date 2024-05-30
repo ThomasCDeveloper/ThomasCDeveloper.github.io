@@ -30,22 +30,29 @@
     <script>
         function daysUntilShaving() {
             const oneDay = 24 * 60 * 60 * 1000;
-
             const today = new Date();
             const shaveDate = new Date(2024, 8, 21);
-
             const daysLeft = Math.floor((shaveDate - today) / oneDay) + 1;
-
+            return daysLeft;
+        }
+        function getText() {
+            const daysLeft = daysUntilShaving();
             if (daysLeft < 0) {
                 return "Ca y est Mathieu il a plus de cheveux !!";
             }
             if (daysLeft == 0) {
                 return "C'est le grand jour pour Mathieu !!";
             }
-            return `Il reste ${daysLeft} jours avant la nouvelle coupe à Mathieu !!`;
+            if (daysLeft == 1) {
+                return "Plus que un jour !!";
+            } else {
+                return `Il reste ${daysLeft} jours avant la nouvelle coupe à Mathieu !!`;
+            }
+            return `Erreur lors de la génération du texte.`
         }
+        document.getElementById('daysUntilShave').textContent = `${getText()}`;
 
-        document.getElementById('daysUntilShave').textContent = `${daysUntilShaving()}`;
+        <!-- rajouter le truc de limage peut etre -->
     </script>
 </body>
 </html>
